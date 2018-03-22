@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { Image, StyleSheet} from 'react-native';
 
 export class ImageBox extends Component {
-  constructor()
+  constructor(props){
+    super(props);
+  }
   render() {
     return (
-      <Image source={this.props.url} style={{width: 200, height: 200}}/>
+      <Image source={this.props.pic} style={styles.img}/>
     )
   }
 }
+
+
+const styles = StyleSheet.create({
+  img: {
+    width: '100%',
+    height: '60%'
+  }
+});
