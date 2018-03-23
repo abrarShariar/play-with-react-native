@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, StyleSheet} from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 
 export class ImageBox extends Component {
   constructor(props){
