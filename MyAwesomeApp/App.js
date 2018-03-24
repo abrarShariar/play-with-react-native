@@ -34,6 +34,22 @@ export default class App extends React.Component {
       <View>
         <Text>Hello World</Text>
         <ImageBox pic={imgList[index]}></ImageBox>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'stretch'}}>
+          <View style={{height: 50, backgroundColor: 'powderblue'}} > 
+            <Text>Hello World</Text>
+          </View>
+          <View style={{height: 50, backgroundColor: 'skyblue'}}>
+            <Text>Hello World</Text>
+          </View>
+          <View style={{height: 50, backgroundColor: 'steelblue'}}>
+            <Text> Hello World</Text>
+          </View>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>
+          <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
+          <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
+          <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
+        </View>
       </View>
     );
   }
