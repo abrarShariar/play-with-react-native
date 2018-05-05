@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, StyleSheet } from 'react-native';
 
-export class ImageBox extends Component {
+export default class ImageBox extends Component {
   constructor(props){
     super(props);
   }

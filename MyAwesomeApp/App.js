@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { ImageBox } from './ImageBox.js';
+import ImageBox from './ImageBox.js';
+import MyTextBox from './MyTextBox.js';
 
 //components
 export default class App extends React.Component {
@@ -33,23 +34,25 @@ export default class App extends React.Component {
     return (
       <View>
         <Text>Hello World</Text>
+        
         <ImageBox pic={imgList[index]}></ImageBox>
-        <View style={{flex: 1, flexDirection: 'row', alignItems: 'stretch'}}>
-          <View style={{height: 50, backgroundColor: 'powderblue'}} > 
-            <Text>Hello World</Text>
-          </View>
-          <View style={{height: 50, backgroundColor: 'skyblue'}}>
-            <Text>Hello World</Text>
-          </View>
-          <View style={{height: 50, backgroundColor: 'steelblue'}}>
-            <Text> Hello World</Text>
-          </View>
-        </View>
-        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>
-          <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
-          <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
-          <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
-        </View>
+        {
+        // <View style={{flex: 1, flexDirection: 'row', alignItems: 'stretch'}}>
+        //   <View style={{height: 50, backgroundColor: 'powderblue'}} > 
+        //     <Text>Hello World</Text>
+        //   </View>
+        //   <View style={{height: 50, backgroundColor: 'skyblue'}}>
+        //     <Text>Hello World</Text>
+        //   </View>
+        //   <View style={{height: 50, backgroundColor: 'steelblue'}}>
+        //     <Text> Hello World</Text>
+        //   </View>
+        // </View>
+        }
+        
+        
+        <MyTextBox/>
+      
       </View>
     );
   }
