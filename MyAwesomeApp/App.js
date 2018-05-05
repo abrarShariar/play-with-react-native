@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, Alert, ViewPagerAndroid, ActivityIndicator } from 'react-native';
 import ImageBox from './ImageBox.js';
 import MyTextBox from './MyTextBox.js';
 
@@ -9,56 +9,81 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       imgList: [
-          { uri: 'https://i.pinimg.com/originals/93/1e/b8/931eb89217edc0750c50bea2bed9613e.jpg' },
-          { uri: 'https://reactjs.org/logo-og.png' }  ,
-          { uri: 'https://vignette.wikia.nocookie.net/metin2/images/f/f9/Superman-logo.gif/revision/latest?cb=20100221080217&path-prefix=it' },
-          { uri: 'http://www.vectortemplates.com/raster/batman-logo.gif'}  
-        ],
-      index: 0
+        { uri: 'https://i.pinimg.com/originals/93/1e/b8/931eb89217edc0750c50bea2bed9613e.jpg' },
+        { uri: 'https://reactjs.org/logo-og.png' }  ,
+        { uri: 'https://vignette.wikia.nocookie.net/metin2/images/f/f9/Superman-logo.gif/revision/latest?cb=20100221080217&path-prefix=it' },
+        { uri: 'http://www.vectortemplates.com/raster/batman-logo.gif'}  
+      ],
+      index: 0,
+      showLoading: false
     };
+    
+    this.onClickMe = this.onClickMe.bind(this);
+    
   }
-  
   
   componentDidMount(){
     let newIndex = 0;
-    // setInterval(() => {
-    //   this.setState({
-    //     index: newIndex
-    //   });
-    //   newIndex = this.state.index >= this.state.imgList.length - 1 ? 0 : this.state.index + 1;
-    // }, 3000);
+  }
+  
+  onClickMe(){
+    this.setState({
+      showLoading: !this.state.showLoading
+    })
   }
   
   render() {
     const {imgList, index} = this.state;
     return (
-      <View>
-        <Text>Hello World</Text>
+      <ViewPagerAndroid
+        style={styles.viewPager}
+        initialPage={0}
+        onPageScroll={() => {console.log("YO")}}
+        peekEnabled={true}
+      >
+        <View style={styles.pageStyle} key="1">
+          <Text>First page</Text>
+          
+          <View style={styles.button}>
+            <Button
+              onPress={this.onClickMe}
+              title="Click Me"
+            ></Button>
+          </View>
+          
+          <View>
+            {this.state.showLoading ? <ActivityIndicator size="large" color="#0000ff"  /> : null}
+          </View>
+        </View>
         
-        <ImageBox pic={imgList[index]}></ImageBox>
-        {
-        // <View style={{flex: 1, flexDirection: 'row', alignItems: 'stretch'}}>
-        //   <View style={{height: 50, backgroundColor: 'powderblue'}} > 
-        //     <Text>Hello World</Text>
-        //   </View>
-        //   <View style={{height: 50, backgroundColor: 'skyblue'}}>
-        //     <Text>Hello World</Text>
-        //   </View>
-        //   <View style={{height: 50, backgroundColor: 'steelblue'}}>
-        //     <Text> Hello World</Text>
-        //   </View>
-        // </View>
-        }
+        <View style={styles.pageStyle} key="2">
+          <Text>Second page</Text>
+        </View>
         
-        
-        <MyTextBox/>
-      
-      </View>
+        <View style={styles.pageStyle} key="3">
+          <Text>Third page</Text>
+        </View>
+      </ViewPagerAndroid>  
     );
   }
 }
 
 const styles = StyleSheet.create({
+  viewPager: {
+    flex: 1
+  },
+  pageStyle: {
+    alignItems: 'center',
+    padding: 20,
+  },
+  button: {
+    marginTop: 50
+  },
+  mainContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
